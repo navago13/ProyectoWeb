@@ -1,0 +1,55 @@
+{% extends "ProyectoWebApp/basepadre.html" %}
+  
+ {% load static %}
+
+ {% block content %}
+
+ {% for post  in posts %}
+
+
+       <!-- Heading -->
+   <section class="page-section clearfix">
+      <div class="container">
+        <div class="intro">
+          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt=""style="width: 45%;">
+          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+            <h2 class="section-heading mb-4" ></h2>
+              <span class="section-heading-lower">{{ post.titulo }}</span>
+              <span class="section-heading-upper"  >{{ post.contenido }}</span>
+            </h2>
+             <div style="text-align: left;">
+                <h6 >
+                 
+                <span  >AUTOR: {{ post.autor }}</span>
+              </h6>
+                
+             </div>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+
+       
+    {% endfor %}
+
+    <section>
+
+            <div style="width: 60%;  margin: auto; text-align: center; color: white;">
+            
+            
+            <p>CATEGORIAS: {% for post  in posts %}{% for categoria  in post.categorias.all  %}<a class="linkcategorias"   href="{% url 'Micategoria' categoria.id %}"> {{ categoria.Nombre }} </a>&nbsp;&nbsp; {% endfor %} {% endfor %}</p>
+            
+            
+            
+            </div>
+
+
+
+
+    </section>
+
+
+ {% endblock %}
